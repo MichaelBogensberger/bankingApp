@@ -1,0 +1,29 @@
+
+.pfp-dash {
+    margin-top:30px;
+}
+
+.gh-title {
+    padding-left: 0px;
+    font-size: var(--card-title-font-size);
+    font-weight: var(--card-title-font-weight);
+    margin-top: 0;
+
+}
+
+.gh-span {
+    width:50px;
+    height:50px;
+}
+
+dd {
+    margin-left: 0px;
+}
+
+.iban-row {
+    margin-bottom: 5px;
+}
+
+.bic-row {
+    margin-top:5px;
+}
