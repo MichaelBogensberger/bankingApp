@@ -33,16 +33,16 @@
 
 
 
-              <form action="..." method="...">
+              <form action="register.php" method="POST">
                 <!-- First row -->
                 <div class="form-row row-eq-spacing-sm">
                   <div class="col-sm">
                     <label for="first-name" class="required">Vorname</label>
-                    <input type="text" class="form-control" id="first-name" placeholder="Max" required="required">
+                    <input name="vorname" type="text" class="form-control" id="first-name" placeholder="Max" required="required">
                   </div>
                   <div class="col-sm">
                     <label for="last-name" class="required">Nachname</label>
-                    <input type="text" class="form-control" id="last-name" placeholder="Mustermann" required="required">
+                    <input name="nachname" type="text" class="form-control" id="last-name" placeholder="Mustermann" required="required">
                   </div>
                 </div>
 
@@ -51,12 +51,12 @@
 
                 <div class="col-sm-5">
                     <label for="birth" class="required">Geburtsdatum</label>
-                    <input type="date" class="form-control" id="birth" placeholder="" required="required">
+                    <input name="geburtsdatum" type="date" class="form-control" id="birth" placeholder="" required="required">
                   </div>
 
                   <div class="col-sm-7">
                     <label for="username" class="required">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="" required="required">
+                    <input name="username" type="text" class="form-control" id="username" placeholder="" required="required">
                   </div>
 
                 </div>
@@ -65,12 +65,12 @@
                 <div class="form-row row-eq-spacing-sm">
                   <div class="col-sm-8">
                     <label for="strasse" class="required">Straße</label>
-                    <input type="text" class="form-control" id="strasse" placeholder="Evergreen terrace 742" required="required">
+                    <input name="strasse" type="text" class="form-control" id="strasse" placeholder="Evergreen terrace 742" required="required">
                   </div>
 
                   <div class="col-sm-4">
                     <label for="land" class="required">Land</label>
-                    <input type="text" class="form-control" id="land" placeholder="Österreich" required="required">
+                    <input name="land" type="text" class="form-control" id="land" placeholder="Österreich" required="required">
                   </div>
                 </div>
 
@@ -79,17 +79,21 @@
                 <div class="form-row row-eq-spacing-sm">
                   <div class="col-sm-7">
                     <label for="city" class="required">Stadt</label>
-                    <input type="text" class="form-control" id="city" placeholder="Imst" required="required">
+                    <input name="stadt" type="text" class="form-control" id="city" placeholder="Imst" required="required">
                   </div>
 
                   <div class="col-sm-5">
                     <label for="plz" class="required">PLZ</label>
-                    <input type="number" min="0" max="9999" class="form-control" id="plz" placeholder="6460" required="required">
+                    <input name="plz" type="number" min="0" max="9999" class="form-control" id="plz" placeholder="6460" required="required">
                   </div>
                 </div>
 
 
-
+                <div class="col-sm-12">
+                    <label for="pw" class="required">Passwort</label>
+                    <input name="password" type="password" class="form-control" id="pw" required="required">
+                  </div>
+                </div>
 
 
 

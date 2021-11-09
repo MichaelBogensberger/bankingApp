@@ -6,7 +6,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <img src="https://eu.ui-avatars.com/api/?name=<?php echo $_SESSION["vorname"] . '+' . $_SESSION["nachname"] ?>&size=90" alt="pfp" class="pfp-dash rounded-circle mx-auto d-block">
-      <h5 class="text-center"><?php echo $_SESSION["vorname"] . $_SESSION["nachname"] ?></h5>
+      <h5 class="text-center"><?php echo $_SESSION["vorname"] . " " . $_SESSION["nachname"] ?></h5>
 
 
       <li class="sidebar-link sidebar-link-with-icon">
@@ -20,21 +20,21 @@
         <span class="sidebar-icon">
         <i class="material-icons">home</i>
         </span>
-        <?php echo $_SESSION["strasse"] ?>
+        <?php echo utf8_encode($_SESSION["strasse"]); ?>
     </li>
 
     <li class="sidebar-link sidebar-link-with-icon">
         <span class="sidebar-icon">
         <i class="material-icons">location_city</i>
         </span>
-        <?php echo $_SESSION["stadt"] . " " . $_SESSION["plz"] ?>
+        <?php echo utf8_encode($_SESSION["stadt"] . " " . $_SESSION["plz"]); ?>
     </li>
 
     <li class="sidebar-link sidebar-link-with-icon">
         <span class="sidebar-icon">
         <i class="material-icons">flag</i>
         </span>
-        <?php echo $_SESSION["land"] ?>
+        <?php echo utf8_encode($_SESSION["land"]); ?>
     </li>
 
 

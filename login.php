@@ -2,8 +2,8 @@
 
 include 'include/database.php';
 
-$username = isset($_POST["username"]) ? $_POST["username"] : "niklasheim";
-$password = isset($_POST["password"]) ? $_POST["password"] : "123";
+$username = isset($_POST["username"]) ? $_POST["username"] : "";
+$password = isset($_POST["password"]) ? $_POST["password"] : "";
 
 if($username && $password){
     $db = connect();
@@ -28,6 +28,8 @@ if($username && $password){
         $_SESSION["plz"] = $data[0]["plz"];
         $_SESSION["stadt"] = $data[0]["stadt"];
         $_SESSION["land"] = $data[0]["land"];
+
+        header('Location: ./index.php');
     } else {
         header('Location: ./loginpage.php');
     }

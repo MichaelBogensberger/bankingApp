@@ -1,8 +1,5 @@
 <?php
-        function getTransaktions($id)
-        {
-            include 'include/database.php';
-
+        function getTransaktions($id){
             $db = connect();
             $sql = "SELECT * FROM transaktion WHERE sender = :id OR empfaenger = :id";
             $stmt = $db->prepare($sql);
@@ -13,31 +10,51 @@
             return $data;
         }
 
-        function getSender($id)
-        {
-            include 'include/database.php';
+        function getUser($id){
 
             $db = connect();
-            $sql = "SELECT * FROM user WHERE id = :sender";
+            $sql = "SELECT * FROM user WHERE id = :id";
             $stmt = $db->prepare($sql);
-            $stmt->bindValue(':sender', $id);
+            $stmt->bindValue(':id', $id);
             $stmt->execute();
-            $sender = $stmt->fetch(PDO::FETCH_ASSOC);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return $sender;
+            return $user;
         }
 
-        function getEmpfaenger($id)
-        {
-            include 'include/database.php';
-
+        function updateGuthaben($id){
             $db = connect();
-            $sql = "SELECT * FROM user WHERE id = :empfaenger";
+            $sql = "SELECT guthaben FROM user WHERE id = :id";
             $stmt = $db->prepare($sql);
-            $stmt->bindValue(':empfaenger', $id);
+            $stmt->bindValue(':id', $id);
             $stmt->execute();
-            $empfaenger = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            return $empfaenger;
+            $guthaben = $stmt->fetch(PDO::FETCH_ASSOC);
+            $_SESSION["guthaben"] = $guthaben["guthaben"];
         }
+
+
+        function getIdFromIban($iban){
+            $db = connect();
+            $sql = "SELECT id FROM user WHERE iban = :iban";
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':iban', $iban);
+            $stmt->execute();
+            $id = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $id["id"];
+        }
+
+
+        function getGuthabenFromId($id){
+            $db = connect();
+            $sql = "SELECT guthaben FROM user WHERE id = :id";
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $guthaben = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $guthaben["guthaben"];
+        }
+
+
+
+
 ?>

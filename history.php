@@ -6,9 +6,11 @@
 
 <?php 
   include 'include/header.php';
+  include 'include/database.php';
+  include 'include/fun.php';
   session_start();
   if(!isset($_SESSION["id"])){
-    // header('Location: ./loginpage.php');
+    header('Location: ./einloggen.php');
   }
 ?>
 
@@ -53,7 +55,9 @@
 
       <!-- Navbar form (inline form) -->
       <div class="form-inline d-none d-md-flex ml-auto">
-        <button class="btn btn-primary">Logout</button>
+        <a href="logout.php">
+          <button class="btn btn-primary">Logout</button>
+        </a>
       </div>
 
 
@@ -131,30 +135,12 @@ include 'include/sidenav.php';
             <tbody>
 
                 <?php
-                    include 'include/database.php';
-
-                    $db = connect();
-                    $sql = "SELECT * FROM transaktion WHERE sender = :id OR empfaenger = :id";
-                    $stmt = $db->prepare($sql);
-                    $stmt->bindValue(':id', $_SESSION["id"]);
-                    $stmt->execute();
-                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $data = getTransaktions($_SESSION["id"]);
 
                     foreach ($data as $key) {
 
-                      $sql1 = "SELECT * FROM user WHERE id = :sender";
-                      $stmt1 = $db->prepare($sql1);
-                      $stmt1->bindValue(':sender', $key["sender"]);
-                      $stmt1->execute();
-                      $sender = $stmt1->fetch(PDO::FETCH_ASSOC);
-
-                      $sql2 = "SELECT * FROM user WHERE id = :empfaenger";
-                      $stmt2 = $db->prepare($sql2);
-                      $stmt2->bindValue(':empfaenger', $key["empfaenger"]);
-                      $stmt2->execute();
-                      $empfaenger = $stmt2->fetch(PDO::FETCH_ASSOC);
-
-                     
+                      $sender = getUser($key["sender"]);
+                      $empfaenger = getUser($key["empfaenger"]);
 
                       ?>
                           <tr class='<?php echo ($_SESSION["id"] == $sender["id"]) ? "table-danger" : "table-success"; ?>'>
@@ -169,27 +155,6 @@ include 'include/sidenav.php';
                       <?php
                     }
                 ?>
-
-              <!-- <tr class="table-danger">
-                <th>11.06.2021</th>
-                <th>11.06.2021</th>
-                <td data-toggle="tooltip" data-title="AT35 3500 0233 2342 2333">Julian Meilinger</td>
-                <td data-toggle="tooltip" data-title="AT35 3500 0233 2342 2333">Niggolas Heim</td>
-                <td>Schutzgeld</td>
-                <td>mehr Infos stehen hier</td>
-                <td class="text-right">11:20</td>
-              </tr>
-
-              <tr class="table-success">
-                <th>11.06.2021</th>
-                <th>11.06.2021</th>
-                <td data-toggle="tooltip" data-title="AT35 3500 0233 2342 2333">Julian Meilinger</td>
-                <td data-toggle="tooltip" data-title="AT35 3500 0233 2342 2333">Niggolas Heim</td>
-                <td>Schutzgeld</td>
-                <td>mehr Infos stehen hier</td>
-                <td class="text-right">11:20</td>
-              </tr> -->
-
 
             </tbody>
           </table>  

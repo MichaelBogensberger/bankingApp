@@ -135,3 +135,16 @@ tr.table-custom {
   .navbar {
       border: 0px !important;
   }
+
+
+
+  .reg-a {
+      text-align: center !important;
+      text-decoration: none !important;
+    }
+
+    .reg-txt {
+        margin-top: 5px;
+    }
+
+

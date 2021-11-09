@@ -6,10 +6,15 @@
 
   <?php 
       include 'include/header.php';
+      include 'include/database.php';
+      include 'include/fun.php';
+
       session_start();
       if(!isset($_SESSION["id"])){
-        // header('Location: ./einloggen.php');
+        header('Location: ./einloggen.php');
       }
+
+      updateGuthaben($_SESSION["id"]);
   ?>
 
 
@@ -51,7 +56,17 @@
 
       <!-- Navbar form (inline form) -->
       <div class="form-inline d-none d-md-flex ml-auto">
-        <button class="btn btn-primary">Logout</button>
+
+      <!--
+        <button class="btn btn-action mr-5" type="button" onclick="halfmoon.toggleDarkMode()" aria-label="Toggle dark mode">
+              <span class="sidebar-icon gh-span">
+                <i class="material-icons">dark_mode</i>
+              </span>
+        </button>
+      -->
+
+      
+        <a href="logout.php"><button class="btn btn-primary">Logout</button>
       </div>
 
 
@@ -68,7 +83,7 @@
             <a href="history.php" class="dropdown-item">History</a>
             <div class="dropdown-divider"></div>
             <div class="dropdown-content">
-                <button class="btn btn-primary btn-block">Logout</button>
+              <a href="logout.php"><button class="btn btn-primary btn-block">Logout</button></a>
             </div>
           </div>
         </div>
@@ -175,32 +190,28 @@ include 'include/sidenav.php';
               <tbody>
 
               <?php
-                    // include 'include/database.php';
-                    // include 'include/fun.php';
-
-                    // $data = getTransaktions($_SESSION["id"]);
+                    $data = getTransaktions($_SESSION["id"]);
+                
+                    $max = count($data);
+                    if($max > 8) $max = 8;
                     
+                    for($i = 0; $i < $max; $i++) {
+
+                      $sender = getUser($data[$i]["sender"]);
+                      $empfaenger = getUser($data[$i]["empfaenger"]);
 
                       ?>
-                          <!-- <tr class='<?php echo ($_SESSION["id"] == $sender["id"]) ? "table-danger" : "table-success"; ?>'>
-                              <th><?php echo $key["datum"] ?></th>
-                              <th><?php echo $key["betrag"] ?></th>
-                              <td data-toggle="tooltip" data-title='<?php echo $sender["iban"] ?>'><?php echo $sender["vorname"] . " " . $sender["nachname"] ?></td>
-                              <td data-toggle="tooltip" data-title='<?php echo $empfaenger["iban"] ?>'><?php echo $empfaenger["vorname"] . " " . $empfaenger["nachname"] ?></td>
-                              <td><?php echo $key["zahlungsreferenz"] ?></td>
-                              <td><?php echo $key["verwendungszweck"] ?></td>
-                              <td class="text-right"><?php echo $key["uhrzeit"] ?></td>
-                          </tr> -->
+                      <tr class="">
+                        <th><?php echo $data[$i]["datum"] ?></th>
+                        <td><?php echo $sender["vorname"] . " " . $sender["nachname"] ?></td>
+                        <td><?php echo $empfaenger["vorname"] . " " . $empfaenger["nachname"] ?></td>
+                        <td><?php echo $data[$i]["betrag"] ?></td>
+                      </tr>
                       <?php
-                    // }
+                    }
                 ?>
 
-                <tr class="">
-                  <th>10.12.2021</th>
-                  <td>Julian Meilinger</td>
-                  <td>Regina Zenzi</td>
-                  <td>120€</td>
-                </tr>
+                
             </table>
 
             <a href="history.php" class="more-a">

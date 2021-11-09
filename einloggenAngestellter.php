@@ -27,10 +27,10 @@
 
             <div class="content">
                     <h1 class="card-title login-txt">
-                    Login
+                    Login für Angestellte
                     </h1>
 
-            <form action="login.php" method="POST" class="w-400 mw-full">
+            <form action="loginAngestellte.php" method="POST" class="w-400 mw-full">
                 <div class="form-group">
                     <label for="bn" class="required">Benutzername</label>
                     <input name="username" type="text" class="form-control" id="bn" required="required">
@@ -43,9 +43,6 @@
 
                 <input class="btn btn-primary btn-block" type="submit" value="Submit">
             </form>
-
-               <a href="registrieren.php" class="reg-a"><p class="reg-txt text-center">Registrieren</p></a>
-
             </div>
 
 
@@ -59,11 +56,6 @@
     <!-- Navbar fixed bottom -->
     <nav class="navbar navbar-fixed-bottom">
       Michael Bogensberger, Niklas Heim
-      <div class="form-inline d-none d-md-flex ml-auto">
-        <a href="einloggenAngestellter.php"><button class="btn btn-primary">Login für Angestellte</button>
-      </div>
-
-
     </nav>
 
   </div>

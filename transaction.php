@@ -53,7 +53,9 @@
 
       <!-- Navbar form (inline form) -->
       <div class="form-inline d-none d-md-flex ml-auto">
-        <button class="btn btn-primary">Logout</button>
+        <a href="logout.php">
+            <button class="btn btn-primary">Logout</button>
+          </a>
       </div>
 
 
@@ -109,12 +111,10 @@ include 'include/sidenav.php';
 
 
       <div class="content">
-
-
       </div class="content">
 
 
-          <form action="..." method="..." class="w-400 mw-full">
+          <form action="include/sendtransaction.php" method="post" class="w-400 mw-full">
 
 
             <!-- Input -->
@@ -131,7 +131,7 @@ include 'include/sidenav.php';
 
             <div class="form-group">
               <label for="money" class="required">Betrag</label>
-              <input name="betrah" type="number" min="1" step="any" class="form-control" id="money" placeholder="€" required="required">
+              <input name="betrag" type="number" min="1" step="any" class="form-control" id="money" placeholder="€" required="required">
             </div>
 
 
@@ -151,7 +151,7 @@ include 'include/sidenav.php';
             <input class="btn btn-primary" type="submit" value="Submit">
           </form>
 
-
+      
 
       </div>
 
