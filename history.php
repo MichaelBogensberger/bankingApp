@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>History</title>
 
 
-  <?php 
-      include 'include/header.php';
-      session_start();
-      if(!isset($_SESSION["id"])){
-        // header('Location: ./einloggen.php');
-      }
-  ?>
+<?php 
+  include 'include/header.php';
+  session_start();
+  if(!isset($_SESSION["id"])){
+    // header('Location: ./loginpage.php');
+  }
+?>
 
 
 
@@ -23,10 +23,11 @@
     <!-- Sticky alerts (toasts), empty container -->
     <div class="sticky-alerts"></div>
 
-
     <!-- Navbar -->
     <nav class="navbar">
      
+    
+
 
       <!-- Navbar brand -->
       <a href="index.php" class="navbar-brand">
@@ -34,16 +35,17 @@
       </a>
 
 
+
       <!-- Navbar nav -->
       <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
-        <li class="nav-item active">
-          <a href="#" class="nav-link">Bankkonto</a>
+        <li class="nav-item">
+          <a href="index.php" class="nav-link">Bankkonto</a>
         </li>
         <li class="nav-item">
           <a href="transaction.php" class="nav-link">Überweisen</a>
         </li>
-        <li class="nav-item">
-          <a href="history.php" class="nav-link">History</a>
+        <li class="nav-item active">
+          <a href="#" class="nav-link">History</a>
         </li>
       </ul>
 
@@ -65,7 +67,7 @@
           <div class="dropdown-menu dropdown-menu-right w-200" aria-labelledby="navbar-dropdown-toggle-btn-1"> <!-- w-200 = width: 20rem (200px) -->
             <a href="index.php" class="dropdown-item">Bankkonto</a>
             <a href="transaction.php" class="dropdown-item">Überweisen</a>
-            <a href="history.php" class="dropdown-item">History</a>
+            <a href="#" class="dropdown-item">History</a>
             <div class="dropdown-divider"></div>
             <div class="dropdown-content">
                 <button class="btn btn-primary btn-block">Logout</button>
@@ -76,9 +78,14 @@
     </nav>
 
     
+
+
+
 <?php
 include 'include/sidenav.php';
 ?>
+
+
 
 
     <!-- Content wrapper -->
@@ -88,74 +95,19 @@ include 'include/sidenav.php';
 
 
     <div class="row">
-      <div class="col-lg-6 col-md-12 col-sm-12">
+
+
+
+
+      <div class="col-1">
+      </div>
+
+
+
+      <div class="col-10">
         
-      <div class=" mw-full"> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
-        <div class="card">
-
-          <li class="sidebar-link sidebar-link-with-icon gh-title">
-            <span class="sidebar-icon gh-span">
-            <i class="material-icons">attach_money</i>
-            </span>
-            Guthaben
-          </li>
-
-          <p class="text-muted">
-           Unter diesem Reiter finden Sie Ihr aktuelles Guthaben über folgendes Konto.
-          </p>
-
-        <dl class="row">
-          <dt class="col-lg-10">Aktueller Wert:</dt>
-          <dd class="col-lg-2"><?php echo $_SESSION["guthaben"] ?>€</dd>
-        </dl>
-
-        </div>
-      </div>
 
 
-
-
-      <div class=" mw-full"> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
-        <div class="card">
-
-          <li class="sidebar-link sidebar-link-with-icon gh-title">
-            <span class="sidebar-icon gh-span">
-            <i class="material-icons">info</i>
-            </span>
-            Bankkonto
-          </li>
-
-          <p class="text-muted">
-           Hier finden Sie Informationen über Ihr Bankkonto wie zb. IBAN oder BIC.
-          </p>
-
-        <dl class="row iban-row">
-          <dt class="col-lg-4">IBAN:</dt>
-          <dd class="col-lg-8"><?php echo $_SESSION["iban"] ?></dd>
-        </dl>
-
-        <dl class="row bic-row">
-          <dt class="col-lg-4">BIC:</dt>
-          <dd class="col-lg-8"><?php echo $_SESSION["bic"] ?></dd>
-        </dl>
-
-
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-      </div>
-      <div class="col-lg-6 col-md-12 col-sm-12">
-      
       
       <div class="content">
             <h2 class="card-title">
@@ -163,26 +115,49 @@ include 'include/sidenav.php';
             </h2>
 
 
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th>Datum</th>
-                  <th>Sender</th>
-                  <th>Empfänger</th>
-                  <th>Betrag</th>
-                </tr>
-              </thead>
-              <tbody>
 
-              <?php
-                    // include 'include/database.php';
-                    // include 'include/fun.php';
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>Betrag</th>
+                <th>Sender</th>
+                <th>Empfänger</th>
+                <th>Zahlungsreferenz</th>
+                <th>Verwendungszweck</th>
+                <th class="text-right">Uhrzeit</th>
+              </tr>
+            </thead>
+            <tbody>
 
-                    // $data = getTransaktions($_SESSION["id"]);
-                    
+                <?php
+                    include 'include/database.php';
+
+                    $db = connect();
+                    $sql = "SELECT * FROM transaktion WHERE sender = :id OR empfaenger = :id";
+                    $stmt = $db->prepare($sql);
+                    $stmt->bindValue(':id', $_SESSION["id"]);
+                    $stmt->execute();
+                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    foreach ($data as $key) {
+
+                      $sql1 = "SELECT * FROM user WHERE id = :sender";
+                      $stmt1 = $db->prepare($sql1);
+                      $stmt1->bindValue(':sender', $key["sender"]);
+                      $stmt1->execute();
+                      $sender = $stmt1->fetch(PDO::FETCH_ASSOC);
+
+                      $sql2 = "SELECT * FROM user WHERE id = :empfaenger";
+                      $stmt2 = $db->prepare($sql2);
+                      $stmt2->bindValue(':empfaenger', $key["empfaenger"]);
+                      $stmt2->execute();
+                      $empfaenger = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+                     
 
                       ?>
-                          <!-- <tr class='<?php echo ($_SESSION["id"] == $sender["id"]) ? "table-danger" : "table-success"; ?>'>
+                          <tr class='<?php echo ($_SESSION["id"] == $sender["id"]) ? "table-danger" : "table-success"; ?>'>
                               <th><?php echo $key["datum"] ?></th>
                               <th><?php echo $key["betrag"] ?></th>
                               <td data-toggle="tooltip" data-title='<?php echo $sender["iban"] ?>'><?php echo $sender["vorname"] . " " . $sender["nachname"] ?></td>
@@ -190,26 +165,45 @@ include 'include/sidenav.php';
                               <td><?php echo $key["zahlungsreferenz"] ?></td>
                               <td><?php echo $key["verwendungszweck"] ?></td>
                               <td class="text-right"><?php echo $key["uhrzeit"] ?></td>
-                          </tr> -->
+                          </tr>
                       <?php
-                    // }
+                    }
                 ?>
 
-                <tr class="">
-                  <th>10.12.2021</th>
-                  <td>Julian Meilinger</td>
-                  <td>Regina Zenzi</td>
-                  <td>120€</td>
-                </tr>
-            </table>
+              <!-- <tr class="table-danger">
+                <th>11.06.2021</th>
+                <th>11.06.2021</th>
+                <td data-toggle="tooltip" data-title="AT35 3500 0233 2342 2333">Julian Meilinger</td>
+                <td data-toggle="tooltip" data-title="AT35 3500 0233 2342 2333">Niggolas Heim</td>
+                <td>Schutzgeld</td>
+                <td>mehr Infos stehen hier</td>
+                <td class="text-right">11:20</td>
+              </tr>
 
-            <a href="history.php" class="more-a">
-              <button class="btn btn-block my-10" type="button">mehr Anzeigen</button>
-            </a>
+              <tr class="table-success">
+                <th>11.06.2021</th>
+                <th>11.06.2021</th>
+                <td data-toggle="tooltip" data-title="AT35 3500 0233 2342 2333">Julian Meilinger</td>
+                <td data-toggle="tooltip" data-title="AT35 3500 0233 2342 2333">Niggolas Heim</td>
+                <td>Schutzgeld</td>
+                <td>mehr Infos stehen hier</td>
+                <td class="text-right">11:20</td>
+              </tr> -->
 
+
+            </tbody>
+          </table>  
 
 
       </div>
+
+      </div>
+
+
+      <div class="col-1">
+      </div>
+
+
 
 
 
@@ -224,8 +218,6 @@ include 'include/sidenav.php';
 
       
 
-
-    </div>
 
 
 

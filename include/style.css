@@ -27,3 +27,111 @@ dd {
 .bic-row {
     margin-top:5px;
 }
+
+
+.more-a {
+    text-decoration: none !important;
+}
+
+
+[data-toggle=tooltip]:not([data-target-breakpoint]):not([data-placement]):focus::after, [data-toggle=tooltip]:not([data-target-breakpoint]):not([data-placement]):hover::after, [data-toggle=tooltip]:not([data-target-breakpoint])[data-placement=top]:focus::after, [data-toggle=tooltip]:not([data-target-breakpoint])[data-placement=top]:hover::after {
+    width: 100%;
+}
+
+
+.login-txt {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 140px !important;
+}
+
+
+
+
+
+
+
+tr.table-custom {
+    color: #FF0266;
+    background-color: #ff02661c;
+    border-color: #ff759763;
+}
+
+
+.dark-mode .card {
+    background: #021526 !important;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.6px);
+    -webkit-backdrop-filter: blur(2.6px);
+}
+
+
+
+
+:root {
+
+
+    --dm-base-body-bg-color: #021b32;
+
+    /* card */
+    
+
+    /* sidenav */
+    --dm-sidebar-bg-color: #021b32;
+
+    /* navbar */
+    --dm-navbar-bg-color:#021b32;
+
+
+    /* Change primary color from blue to indigo */
+    --primary-color: #FF0266;                                     /* Before: var(--blue-color) */
+    --primary-color-light: #ff0256;                         /* Before: var(--blue-color-light) */
+    --primary-color-very-light: var(--indigo-color-very-light);               /* Before: var(--blue-color-very-light) */
+    --primary-color-dark: var(--indigo-color-dark);                           /* Before: var(--blue-color-dark) */
+    --primary-color-very-dark: var(--indigo-color-very-dark);                 /* Before: var(--blue-color-very-dark) */
+    --primary-box-shadow-color: #FF7597;               /* Before: var(--blue-box-shadow-color) */
+    --primary-box-shadow-color-darker: var(--indigo-box-shadow-color-darker); /* Before: var(--blue-box-shadow-color-darker) */
+    --text-color-on-primary-color-bg: var(--text-color-on-indigo-color-bg);   /* Before: var(--text-color-on-blue-color-bg) */
+  
+    /* Card */
+    --card-border-radius: 20px;                           /* Before: var(--base-border-radius) */
+  
+  
+    /* Card (dark mode only) */
+    --dm-card-bg-image: #FF0266;  /* Before: none */
+    --dm-card-border-color: rgba(0, 0, 0, 0.2);       /* Before: rgba(0, 0, 0, 0.2) */
+    --dm-card-box-shadow: box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;     /* Before: none */
+  
+  
+    /* Input (dark mode only) */
+    --dm-input-box-shadow: var(--lm-input-box-shadow);      /* Before: none */
+   
+    /* Primary button (dark mode only) */
+    --dm-button-primary-bg-image: #5CDB95;
+    --dm-button-primary-bg-image-hover: #5CDB95; /* Before: none */
+    
+  }
+  
+  /* 
+    Local scope 
+    ~ This way, only the primary button's height and border width is affected.
+    ~ Default button remains the same.
+  */
+  .btn-primary {
+    --button-height: 3.6rem;  /* Before: 3.2rem (32px) */
+    --button-border-width: 0; /* Before: var(--base-border-width) */
+  }
+
+
+  .navbar-fixed-bottom {
+    border: 0px !important;
+  }
+
+  .sidebar {
+      border: 0px !important;
+  }
+
+  .navbar {
+      border: 0px !important;
+  }
