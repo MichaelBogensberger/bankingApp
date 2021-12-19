@@ -66,7 +66,7 @@
       -->
 
       
-        <a href="logout.php"><button class="btn btn-primary">Logout</button>
+        <a href="logout.php"><button class="btn btn-primary">Logout</button></a>
       </div>
 
 

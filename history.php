@@ -115,7 +115,7 @@ include 'include/sidenav.php';
       
       <div class="content">
             <h2 class="card-title">
-              History
+              Transaktionen von Usern
             </h2>
 
 
@@ -158,6 +158,55 @@ include 'include/sidenav.php';
 
             </tbody>
           </table>  
+
+
+
+
+          <h2 class="card-title mt-20 mb-10">
+              Ein/-Auszahlungen der Bank
+            </h2>
+
+
+          <table class="table table-striped table-hover w-500 zahlung-table">
+            <thead>
+              <tr>
+                <th>Angestellter</th>
+                <th>Art</th>
+                <th>Betrag</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                <?php
+                    $data = getZahlungen($_SESSION["id"]);
+
+                    foreach ($data as $key) {
+
+                      $angestellter = getAngestellter($key["angestellter"]);
+
+                      ?>
+                          <tr class='
+                          <?php 
+                            echo ($key["art"] == 0) ? "table-danger" : "table-success"; 
+                          ?>
+                          '>
+                              <th><?php echo $angestellter["username"] ?></th>
+                              <th>
+                              <?php 
+                                  echo ($key["art"] == 0) ? "Abgehoben" : "Eingezahlt"; 
+                              ?>
+                              </th>
+                              <th><?php echo $key["betrag"] ?></th>
+                          </tr>
+                      <?php
+                    }
+                ?>
+
+            </tbody>
+          </table>  
+
+
+
 
 
       </div>

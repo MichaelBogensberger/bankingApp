@@ -38,7 +38,7 @@
 
       <!-- Navbar form (inline form) -->
       <div class="form-inline d-none d-md-flex ml-auto">
-        <button class="btn btn-primary">Logout</button>
+      <a href="logout.php"><button class="btn btn-primary btn-block">Logout</button></a>
       </div>
 
 
@@ -53,7 +53,7 @@
             <a href="angestellter.php" class="dropdown-item">Zahlungen</a>
             <div class="dropdown-divider"></div>
             <div class="dropdown-content">
-                <button class="btn btn-primary btn-block">Logout</button>
+            <a href="logout.php"><button class="btn btn-primary btn-block">Logout</button></a>
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@
                 
 
 
-                <form action="..." method="..." class="w-400 mw-full">
+                <form action="sendZahlung.php" method="post" class="w-400 mw-full">
 
 
                     <!-- Input -->
@@ -124,19 +124,19 @@
 
                     <div class="form-group">
                     <label for="money" class="required">Betrag</label>
-                    <input name="betrah" type="number" min="1" step="any" class="form-control" id="money" placeholder="€" required="required">
+                    <input name="betrag" type="number" min="1" step="any" class="form-control" id="money" placeholder="€" required="required">
                     </div>
 
                     <div class="form-group">
                         <!-- First radio button -->
                         <div class="custom-radio">
-                        <input checked="checked" type="radio" name="radio-set-1" id="radio-1" value="radio-1">
+                        <input checked="checked" type="radio" name="art" id="radio-1" value="0">
                         <label for="radio-1">Abheben</label>
                         </div>
 
                         <!-- Second radio button (checked by default) -->
                         <div class="custom-radio">
-                        <input type="radio" name="radio-set-1" id="radio-2" value="radio-2">
+                        <input type="radio" name="art" id="radio-2" value="1">
                         <label for="radio-2">Einzahlen</label>
                         </div>
                     </div>

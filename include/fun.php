@@ -10,6 +10,19 @@
             return $data;
         }
 
+
+        function getZahlungen($id){
+            $db = connect();
+            $sql = "SELECT * FROM zahlung WHERE user = :id";
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $data;
+        }
+
+
         function getUser($id){
 
             $db = connect();
@@ -21,6 +34,23 @@
 
             return $user;
         }
+
+
+        function getAngestellter($id){
+
+            $db = connect();
+            $sql = "SELECT * FROM angestellter WHERE id = :id";
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $user;
+        }
+
+
+
+
 
         function updateGuthaben($id){
             $db = connect();
