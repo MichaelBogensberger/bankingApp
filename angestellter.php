@@ -5,6 +5,14 @@
 
 <?php 
       include 'include/header.php';
+
+
+      session_start();
+      if(!isset($_SESSION["id"])){
+        header('Location: ./einloggen.php');
+      }
+
+
   ?>
 
 </head>
@@ -68,8 +76,8 @@
 
         <!-- Sidebar -->
         <div class="sidebar">
-        <img src="https://eu.ui-avatars.com/api/?name=R&size=90" alt="pfp" class="pfp-dash rounded-circle mx-auto d-block">
-        <h5 class="text-center">Regina</h5>
+        <img src="https://eu.ui-avatars.com/api/?name=<?php echo $_SESSION["username"] ?>&size=90" alt="pfp" class="pfp-dash rounded-circle mx-auto d-block">
+        <h5 class="text-center"><?php echo $_SESSION["username"] ?></h5>
 
 
         <li class="sidebar-link sidebar-link-with-icon">
@@ -83,7 +91,7 @@
             <span class="sidebar-icon">
             <i class="material-icons">fingerprint</i>
             </span>
-            User-ID: 1
+            User-ID: <?php echo $_SESSION["id"] ?>
         </li>
 
 
@@ -114,6 +122,8 @@
 
 
                 <form action="sendZahlung.php" method="post" class="w-400 mw-full">
+
+                
 
 
                     <!-- Input -->

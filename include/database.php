@@ -1,7 +1,7 @@
 <?php
 
 $dbName = 'banking';
-$dbHost = 'localhost:3306';
+$dbHost = 'localhost:3307';
 $dbUsername = 'root';
 $dbUserPassword = '';
 
