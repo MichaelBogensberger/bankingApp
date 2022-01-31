@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
-
+<title>Transaktion</title>
 
 <?php 
   include 'include/header.php';
+  include 'include/database.php';
+  include 'include/fun.php';
   session_start();
   if(!isset($_SESSION["id"])){
-    // header('Location: ./loginpage.php');
+    header('Location: ./einloggen.php');
   }
 ?>
 
@@ -26,6 +27,18 @@
     <!-- Navbar -->
     <nav class="navbar">
      
+
+    
+    <?php
+    if(isset($_GET['error'])) 
+    {
+        echo "<script> window.onload = function() {
+          toastDangerAlert();
+        }; </script>";
+    }
+  ?>
+
+
     
 
 
@@ -57,6 +70,8 @@
             <button class="btn btn-primary">Logout</button>
           </a>
       </div>
+
+
 
 
       <!-- Navbar content (with the dropdown menu) -->
@@ -101,12 +116,12 @@ include 'include/sidenav.php';
 
 
 
-      <div class="col-2">
+      <div class="col-1">
       </div>
 
 
 
-      <div class="col-8">
+      <div class="col-6">
         
 
 
@@ -153,10 +168,36 @@ include 'include/sidenav.php';
 
       
 
+
+
       </div>
 
 
-      <div class="col-2">
+      <div class="col-5">
+
+
+
+      <h5 class="fw-bc font-size-20">Verfügbare User</h5>
+      <ul>
+   
+             <?php
+                    $data = getAllData();
+
+                    foreach ($data as $key) {
+
+
+                      ?>
+                           <li><code class="code font-size-14"><?php echo $key["username"]; echo " 👉🏻 "; echo $key["iban"];  ?> </code></li>
+                         
+                          </tr>
+                      <?php
+                    }
+                ?>
+            </ul>
+
+
+
+
       </div>
 
 
@@ -205,6 +246,21 @@ include 'include/sidenav.php';
 
 <script type="text/javascript">
 halfmoon.toggleDarkMode();
+
+
+
+  // Toasts danger alert
+  function toastDangerAlert() {
+    halfmoon.initStickyAlert({
+      content: "Beim senden der Transaktion ist ein Fehler aufgetretten.",
+      title: "Fehler",
+      alertType: "alert-danger",
+      fillType: "filled"
+    });
+  }
+
+
+
 </script>
 
 

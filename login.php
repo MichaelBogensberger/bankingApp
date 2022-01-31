@@ -31,7 +31,7 @@ if($username && $password){
 
         header('Location: ./index.php');
     } else {
-        header('Location: ./loginpage.php');
+        header('Location: ./einloggen.php?error=1');
     }
 }
 

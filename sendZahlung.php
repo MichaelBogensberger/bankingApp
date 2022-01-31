@@ -28,6 +28,10 @@ echo $currentUserId;
 echo "<br>";
 echo $idFromIban;
 
+if($idFromIban == null || $betrag <= 0 || $betrag >= 100000) {
+  header('Location: ./angestellter.php?error=1');
+}
+
 
 
 $db = connect();

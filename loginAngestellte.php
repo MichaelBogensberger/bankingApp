@@ -21,7 +21,7 @@ if($username && $password){
 
         header('Location: ./angestellter.php');
     } else {
-        header('Location: ./loginAngestellte.php');
+        header('Location: ./einloggenAngestellter.php?error=1');
     }
 }
 

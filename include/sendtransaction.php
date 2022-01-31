@@ -33,6 +33,10 @@ echo $currentUserId;
 echo "<br>";
 echo $idFromIban;
 
+if($idFromIban == null || $betrag <= 0 || $betrag >= 100000) {
+  header('Location: ../transaction.php?error=1');
+}
+
 
 
 $db = connect();
@@ -68,7 +72,7 @@ $db->exec($sql);
 
 
 
-    header('Location: ../index.php');
+   header('Location: ../index.php');
   ?>
 
 

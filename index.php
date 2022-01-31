@@ -193,7 +193,7 @@ include 'include/sidenav.php';
                     $data = getTransaktions($_SESSION["id"]);
                 
                     $max = count($data);
-                    if($max > 8) $max = 8;
+                    if($max > 5) $max = 5;
                     
                     for($i = 0; $i < $max; $i++) {
 

@@ -20,6 +20,19 @@
     <div class="content-wrapper">
     <div class="row">
 
+
+    <?php
+    if(isset($_GET['error'])) 
+    {
+
+        echo "<script> window.onload = function() {
+          toastDangerAlert();
+        }; </script>";
+
+    }
+
+    ?>
+
       <div class="col-lg-4 col-sm-2 col-md-1">
       </div>
 
@@ -56,6 +69,10 @@
     <!-- Navbar fixed bottom -->
     <nav class="navbar navbar-fixed-bottom">
       Michael Bogensberger, Niklas Heim
+
+      <div class="form-inline d-none d-md-flex ml-auto">
+        <a href="index.php"><button class="btn btn-primary">zurück</button>
+      </div>
     </nav>
 
   </div>
@@ -64,6 +81,21 @@
 
 <script type="text/javascript">
 halfmoon.toggleDarkMode();
+
+
+
+
+
+  // Toasts danger alert
+  function toastDangerAlert() {
+    halfmoon.initStickyAlert({
+      content: "Der Username oder das Passwort waren nicht korrekt",
+      title: "Login fehlgeschlagen",
+      alertType: "alert-danger",
+      fillType: "filled"
+    });
+  }
+
 </script>
 
 

@@ -6,6 +6,7 @@
 
 <?php 
       include 'include/header.php';
+
   ?>
 
 </head>
@@ -17,6 +18,7 @@
     <!-- Sticky alerts (toasts), empty container -->
     <div class="sticky-alerts"></div>
     <!-- Content wrapper -->
+
     <div class="content-wrapper">
     <div class="row">
 
@@ -29,6 +31,23 @@
                     <h1 class="card-title login-txt">
                     Login
                     </h1>
+
+
+                    <?php
+
+if(isset($_GET['error'])) 
+{
+
+    echo "<script> window.onload = function() {
+      toastDangerAlert();
+    }; </script>";
+
+}
+    
+
+
+?>
+
 
             <form action="login.php" method="POST" class="w-400 mw-full">
                 <div class="form-group">
@@ -72,6 +91,21 @@
 
 <script type="text/javascript">
 halfmoon.toggleDarkMode();
+
+
+
+
+  // Toasts danger alert
+  function toastDangerAlert() {
+    halfmoon.initStickyAlert({
+      content: "Der Username oder das Passwort waren nicht korrekt",
+      title: "Login fehlgeschlagen",
+      alertType: "alert-danger",
+      fillType: "filled"
+    });
+  }
+
+
 </script>
 
 

@@ -100,6 +100,22 @@
         </div>
 
 
+        <?php
+
+if(isset($_GET['error'])) 
+{
+
+    echo "<script> window.onload = function() {
+      toastDangerAlert();
+    }; </script>";
+
+}
+    
+
+
+?>
+
+
 
     <!-- Content wrapper -->
     <div class="content-wrapper">
@@ -230,6 +246,19 @@
 
 <script type="text/javascript">
 halfmoon.toggleDarkMode();
+
+
+
+
+  // Toasts danger alert
+  function toastDangerAlert() {
+    halfmoon.initStickyAlert({
+      content: "Beim senden der Transaktion ist ein Fehler aufgetretten.",
+      title: "Fehler",
+      alertType: "alert-danger",
+      fillType: "filled"
+    });
+  }
 </script>
 
 
