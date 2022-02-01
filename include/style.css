@@ -1,3 +1,97 @@
+.bg-t {
+    background-color: transparent !important;
+}
+
+table.dataTable.display {
+    background-color: transparent !important;
+}
+
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+    background-color: transparent !important;
+}
+
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+    background-color: transparent !important;
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+    background-color: transparent !important;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 3px;
+    color: white !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    padding: 4px;
+    color: white !important;
+}
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: white !important;
+    border-radius: 100px !important;
+    border: 0px solid red !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #dcdcdc));
+    background: -webkit-linear-gradient(top, #FF0266 0%, #FF0266 100%);
+    background: -moz-linear-gradient(top, #FF0266 0%, #FF0266 100%);
+    background: -ms-linear-gradient(top, #FF0266 0%, #FF0266 100%);
+    background: -o-linear-gradient(top, #FF0266 0%, #FF0266 100%);
+    background: linear-gradient(to bottom, #FF0266 0%, #FF0266 100%);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    cursor: default;
+    color: white !important;
+    border: 1px solid transparent;
+    background: transparent;
+    box-shadow: none;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    color: var(--dm-input-text-color) !important;
+    background-color: var(--dm-input-bg-color)  !important;
+    border-color: var(--dm-input-border-color)  !important;
+    -moz-box-shadow: var(--dm-input-box-shadow)  !important;
+    -webkit-box-shadow: var(--dm-input-box-shadow)  !important;
+    box-shadow: var(--dm-input-box-shadow)  !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    color: var(--dm-input-text-color) !important;
+    background-color: var(--dm-input-bg-color)  !important;
+    border-color: var(--dm-input-border-color)  !important;
+    -moz-box-shadow: var(--dm-input-box-shadow)  !important;
+    -webkit-box-shadow: var(--dm-input-box-shadow)  !important;
+    box-shadow: var(--dm-input-box-shadow)  !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    color: white!important;
+    background-color: transparent !important;
+    border-color: var(--dm-input-border-color) !important;
+    -moz-box-shadow: var(--dm-input-box-shadow) !important;
+    -webkit-box-shadow: var(--dm-input-box-shadow) !important;
+    box-shadow: var(--dm-input-box-shadow) !important;
+}
+
+select option { color: black;
+background-color: transparent !important; }
+
+
+
+
+
+
 
 .pfp-dash {
     margin-top:30px;
